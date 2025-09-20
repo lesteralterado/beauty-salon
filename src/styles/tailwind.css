@@ -1,0 +1,349 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Core Brand Colors */
+    --color-background: #FEFEFE; /* Pure canvas */
+    --color-foreground: #2D2D2D; /* Extended reading */
+    --color-border: rgba(255, 255, 255, 0.2); /* Glassmorphism borders */
+    --color-input: #F9F7F8; /* Subtle depth */
+    --color-ring: #E8B4A0; /* Rose gold focus */
+    
+    /* Card System */
+    --color-card: #F9F7F8; /* Subtle depth */
+    --color-card-foreground: #2D2D2D; /* Extended reading */
+    
+    /* Popover System */
+    --color-popover: #FEFEFE; /* Pure canvas */
+    --color-popover-foreground: #2D2D2D; /* Extended reading */
+    
+    /* Muted System */
+    --color-muted: #F5F0F6; /* Pearl luminosity */
+    --color-muted-foreground: #6B6B6B; /* Clear hierarchy */
+    
+    /* Primary Brand */
+    --color-primary: #E8B4A0; /* Rose gold warmth */
+    --color-primary-foreground: #FFFFFF; /* White */
+    
+    /* Secondary Brand */
+    --color-secondary: #F5F0F6; /* Pearl luminosity */
+    --color-secondary-foreground: #2D2D2D; /* Extended reading */
+    
+    /* Accent System */
+    --color-accent: #8B5A8C; /* Deep plum */
+    --color-accent-foreground: #FFFFFF; /* White */
+    
+    /* Status Colors */
+    --color-success: #7FB069; /* Natural confidence */
+    --color-success-foreground: #FFFFFF; /* White */
+    
+    --color-warning: #E8B86D; /* Gentle urgency */
+    --color-warning-foreground: #2D2D2D; /* Extended reading */
+    
+    --color-error: #D67B7B; /* Helpful concern */
+    --color-error-foreground: #FFFFFF; /* White */
+    
+    --color-destructive: #D67B7B; /* Helpful concern */
+    --color-destructive-foreground: #FFFFFF; /* White */
+    
+    /* Text Hierarchy */
+    --color-text-primary: #2D2D2D; /* Extended reading */
+    --color-text-secondary: #6B6B6B; /* Clear hierarchy */
+    
+    /* Surface System */
+    --color-surface: #F9F7F8; /* Subtle depth */
+    
+    /* CTA Colors */
+    --color-cta: #FF6B9D; /* Vibrant rose */
+    --color-cta-foreground: #FFFFFF; /* White */
+    
+    /* Enhanced Glassmorphism Variables */
+    --glass-background: rgba(255, 255, 255, 0.08);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --glass-backdrop: blur(15px);
+    
+    /* High Contrast Glassmorphism for Text Visibility */
+    --glass-background-readable: rgba(255, 255, 255, 0.25);
+    --glass-background-dark: rgba(0, 0, 0, 0.4);
+    --glass-border-readable: rgba(255, 255, 255, 0.3);
+    --glass-backdrop-strong: blur(25px);
+    
+    /* Shadow System */
+    --shadow-subtle: 0 4px 6px rgba(0, 0, 0, 0.07), 0 1px 3px rgba(0, 0, 0, 0.06);
+    --shadow-floating: 0 20px 25px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.04);
+    --shadow-glassmorphism: 0 8px 32px rgba(31, 38, 135, 0.37);
+    --shadow-text-readable: 0 2px 8px rgba(0, 0, 0, 0.3);
+    
+    /* Animation Variables */
+    --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    --duration-micro: 0.3s;
+    --duration-morph: 0.8s;
+  }
+  
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+  }
+  
+  .font-headline {
+    font-family: 'Playfair Display', serif;
+  }
+  
+  .font-body {
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .font-cta {
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .font-accent {
+    font-family: 'Cormorant Garamond', serif;
+  }
+}
+
+@layer components {
+  /* Glassmorphism Components */
+  .glass-panel {
+    background: var(--glass-background);
+    backdrop-filter: var(--glass-backdrop);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+  }
+  
+  .glass-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: var(--shadow-glassmorphism);
+  }
+  
+  /* Enhanced Glass Components for Better Text Visibility */
+  .glass-card-readable {
+    background: var(--glass-background-readable);
+    backdrop-filter: var(--glass-backdrop-strong);
+    border: 1px solid var(--glass-border-readable);
+    border-radius: 16px;
+    box-shadow: var(--shadow-glassmorphism), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+  
+  .glass-panel-readable {
+    background: var(--glass-background-readable);
+    backdrop-filter: var(--glass-backdrop-strong);
+    border: 1px solid var(--glass-border-readable);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  }
+  
+  .glass-panel-dark {
+    background: var(--glass-background-dark);
+    backdrop-filter: var(--glass-backdrop-strong);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Text Enhancement for Glass Backgrounds */
+  .text-glass-readable {
+    text-shadow: var(--shadow-text-readable);
+    font-weight: 500;
+  }
+  
+  .text-glass-title {
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+    font-weight: 600;
+  }
+  
+  /* Morphing Animations */
+  .morph-hover {
+    transition: transform var(--duration-micro) var(--transition-smooth);
+  }
+  
+  .morph-hover:hover {
+    transform: translateZ(10px) scale(1.02);
+  }
+  
+  .morph-3d {
+    transform-style: preserve-3d;
+    transition: transform var(--duration-morph) var(--transition-smooth);
+  }
+  
+  .morph-3d:hover {
+    transform: rotateX(15deg) rotateY(5deg) translateZ(50px);
+  }
+  
+  /* Floating Elements */
+  .float-gentle {
+    animation: floatGentle 6s ease-in-out infinite;
+  }
+  
+  @keyframes floatGentle {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+  
+  .float-bubble {
+    animation: floatBubble 8s ease-in-out infinite;
+  }
+  
+  @keyframes floatBubble {
+    0%, 100% { transform: translate(0px, 0px) rotate(0deg); }
+    33% { transform: translate(20px, -15px) rotate(120deg); }
+    66% { transform: translate(-15px, -20px) rotate(240deg); }
+  }
+  
+  /* Liquid Typography */
+  .text-morph {
+    background: linear-gradient(45deg, var(--color-primary), var(--color-accent));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textMorph 2.5s ease-in-out infinite;
+  }
+  
+  @keyframes textMorph {
+    0%, 100% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+    50% { clip-path: polygon(20% 0, 80% 0, 100% 100%, 0 100%); }
+  }
+  
+  /* Interactive Elements */
+  .interactive-card {
+    transition: all var(--duration-micro) var(--transition-smooth);
+    cursor: pointer;
+  }
+  
+  .interactive-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-floating);
+  }
+  
+  /* CTA Morphing */
+  .cta-morph {
+    position: relative;
+    overflow: hidden;
+    transition: all var(--duration-micro) var(--transition-smooth);
+  }
+  
+  .cta-morph::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+  }
+  
+  .cta-morph:hover::before {
+    left: 100%;
+  }
+  
+  .cta-morph:hover {
+    transform: translateZ(5px) scale(1.05);
+    box-shadow: var(--shadow-floating);
+  }
+}
+
+@layer utilities {
+  /* Spacing System - Golden Ratio */
+  .space-xs { @apply p-2; } /* 8px */
+  .space-sm { @apply p-3; } /* 12px */
+  .space-md { @apply p-5; } /* 20px */
+  .space-lg { @apply p-8; } /* 32px */
+  .space-xl { @apply p-14; } /* 56px */
+  
+  /* Enhanced Text Shadows for Glass Readability */
+  .text-shadow-soft {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .text-shadow-strong {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .text-shadow-readable {
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3), 0 2px 6px rgba(0, 0, 0, 0.15);
+  }
+  
+  .text-shadow-glass {
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.6);
+  }
+  
+  .text-shadow-outline {
+    text-shadow: 
+      -1px -1px 0 rgba(255, 255, 255, 0.8),
+      1px -1px 0 rgba(255, 255, 255, 0.8),
+      -1px 1px 0 rgba(255, 255, 255, 0.8),
+      1px 1px 0 rgba(255, 255, 255, 0.8),
+      0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Backdrop Blur Utilities */
+  .backdrop-blur-glass {
+    backdrop-filter: blur(15px);
+  }
+  
+  .backdrop-blur-strong {
+    backdrop-filter: blur(25px);
+  }
+  
+  /* Transform Utilities */
+  .transform-3d {
+    transform-style: preserve-3d;
+  }
+  
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  
+  /* Gradient Utilities */
+  .gradient-brand {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  }
+  
+  .gradient-ethereal {
+    background: linear-gradient(135deg, var(--color-secondary), var(--color-muted));
+  }
+  
+  /* Background Overlays for Text Readability */
+  .bg-readable-light {
+    background: rgba(255, 255, 255, 0.9);
+  }
+  
+  .bg-readable-dark {
+    background: rgba(0, 0, 0, 0.7);
+  }
+  
+  .bg-glass-text {
+    background: linear-gradient(135deg, 
+      rgba(255, 255, 255, 0.15) 0%, 
+      rgba(255, 255, 255, 0.05) 100%);
+    backdrop-filter: blur(10px);
+  }
+  
+  /* Animation Delays */
+  .delay-100 { animation-delay: 0.1s; }
+  .delay-200 { animation-delay: 0.2s; }
+  .delay-300 { animation-delay: 0.3s; }
+  .delay-400 { animation-delay: 0.4s; }
+  .delay-500 { animation-delay: 0.5s; }
+}
